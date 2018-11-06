@@ -1,13 +1,13 @@
 package org.com.wink;
 
 /**
- * Hello world!
+ * HelloA world!
  *
  */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println( "HelloA World!" );
     }
 }
