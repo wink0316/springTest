@@ -1,11 +1,17 @@
 package org.com.wink.ClassLoader;
 
+import java.lang.reflect.Method;
 import java.util.Properties;
 
 public class Test {
     public static void main(String[] args) {
         //testSystemProperties();
-        testClassLoader();
+        //testClassLoader();
+        try {
+            MyClassLoaderTest();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void testSystemProperties(){
@@ -27,5 +33,17 @@ public class Test {
         System.out.println(intLoader);
         System.out.println(helloLoader.getParent());
         System.out.println(helloLoader.getParent().getParent());
+    }
+
+    public static void MyClassLoaderTest() throws Exception{
+
+        MyDeskClassLoader myClassLoader = new MyDeskClassLoader("E:\\java");
+        Class<?> aClass = myClassLoader.loadClass("org.com.wink.ClassLoader.Hello");
+        if(aClass != null){
+            Object obj = aClass.newInstance();
+            Method sayHello = aClass.getDeclaredMethod("sayHello", null);
+            sayHello.invoke(obj,null);
+        }
+
     }
 }
