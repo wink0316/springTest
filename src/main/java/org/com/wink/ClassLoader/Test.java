@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class Test {
     public static void main(String[] args) {
-        //testSystemProperties();
+        testSystemProperties();
 
         //testClassLoader();
 
@@ -15,11 +15,11 @@ public class Test {
             e.printStackTrace();
         }*/
 
-        try {
+       /* try {
             contextClassLoaderTest();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public static void testSystemProperties(){
