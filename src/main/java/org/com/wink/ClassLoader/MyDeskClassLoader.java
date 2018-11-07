@@ -4,6 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 
+/**
+ * 参考博客
+ * https://blog.csdn.net/u013851082/article/details/71723777
+ */
 public class MyDeskClassLoader extends ClassLoader{
 
     private String deskClassPath;
@@ -17,7 +21,7 @@ public class MyDeskClassLoader extends ClassLoader{
         if(index == -1){
             return name+".class";
         }else{
-            return name.substring(index)+".class";
+            return name.substring(index + 1)+".class";
         }
     }
 

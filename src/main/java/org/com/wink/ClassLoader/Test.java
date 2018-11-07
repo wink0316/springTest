@@ -56,8 +56,8 @@ public class Test {
 
     public static void contextClassLoaderTest() throws Exception{
 
-        MyDeskClassLoader classLoader = new MyDeskClassLoader("E:\\java");
-        Class<?> clazz1 = classLoader.loadClass("org.com.wink.ClassLoader.Hello");
+        final MyDeskClassLoader classLoader = new MyDeskClassLoader("E:\\java");
+        final Class<?> clazz1 = classLoader.loadClass("org.com.wink.ClassLoader.Hello");
         if(clazz1 != null){
             System.out.println(clazz1.getClassLoader().toString());
             Object obj1 = clazz1.newInstance();
@@ -65,16 +65,20 @@ public class Test {
             sayHello.invoke(obj1,null);
         }
 
-        MyDeskClassLoaderB classLoaderB = new MyDeskClassLoaderB("E:\\java\\hello");
+        final MyDeskClassLoaderB classLoaderB = new MyDeskClassLoaderB("E:\\java");
         System.out.println("Thread:"+Thread.currentThread().getName()+" ,classLoader:"+Thread.currentThread().getContextClassLoader().toString());
         new Thread(new Runnable() {
             public void run() {
+                Thread.currentThread().setContextClassLoader(classLoaderB);
                 System.out.println("Thread:"+Thread.currentThread().getName()+" ,classLoader:"+Thread.currentThread().getContextClassLoader().toString());
                 try {
                     ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
                     Class<?> aClass = contextClassLoader.loadClass("org.com.wink.ClassLoader.Hello");
                     System.out.println(aClass.getClassLoader().toString());
                     if(aClass != null){
+
+                        System.out.println(clazz1 == aClass);
+
                         Object threadObj = aClass.newInstance();
                         Method threadSayHello = aClass.getDeclaredMethod("sayHello", null);
                         threadSayHello.invoke(threadObj,null);

@@ -17,7 +17,7 @@ public class MyDeskClassLoaderB extends ClassLoader{
         if(index == -1){
             return name+".class";
         }else{
-            return name.substring(index)+".class";
+            return name.substring(index + 1)+".class";
         }
     }
 
