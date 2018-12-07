@@ -9,6 +9,10 @@ import java.io.FileInputStream;
  * https://blog.csdn.net/u013851082/article/details/71723777
  * 每个Thread都有一个相关联的ClassLoader，默认是AppClassLoader。并且子线程默认使用父线程的ClassLoader除非子线程特别设置。
  *  Launcher在初始化时会执行:Thread.currentThread().setContextClassLoader(this.loader);
+ *
+ *  全盘负责委托机制：
+ *  “全盘负责”:是指当一个classloader装在一个类时，除非显示地使用另外一个classloader，该类所依赖及引用的类也有这个classloader载入
+ *  "委托机制":双亲委托
  */
 public class MyDeskClassLoader extends ClassLoader{
 
