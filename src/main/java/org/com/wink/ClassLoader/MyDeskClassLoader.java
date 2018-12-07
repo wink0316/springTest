@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 /**
  * 参考博客
  * https://blog.csdn.net/u013851082/article/details/71723777
+ * 每个Thread都有一个相关联的ClassLoader，默认是AppClassLoader。并且子线程默认使用父线程的ClassLoader除非子线程特别设置。
+ *  Launcher在初始化时会执行:Thread.currentThread().setContextClassLoader(this.loader);
  */
 public class MyDeskClassLoader extends ClassLoader{
 
