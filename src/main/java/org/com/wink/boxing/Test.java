@@ -8,7 +8,7 @@ package org.com.wink.boxing;
  * Integer a = 1;自动装箱
  * int b = a;自动拆箱
  * 当基础类型与封装类型==时，拆箱。当比较两边都为封装类型时，不拆箱。
- * 当做运算时，拆箱
+ * 当做运算时(+,-,*,/,>=,<=,>,<)，拆箱
  */
 public class Test {
 
@@ -63,5 +63,11 @@ public class Test {
         Long c2 = 2000l;
         System.out.println(c2 == (a + b));
         System.out.println(c2 == (a + d));*/
+
+        /*Integer a = 1000;
+        Integer b = 1000;
+        System.out.println(a == b);//不拆箱
+        System.out.println(a >= b);//拆箱*/
+
     }
 }
