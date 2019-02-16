@@ -9,6 +9,9 @@ package org.com.wink.boxing;
  * int b = a;自动拆箱
  * 当基础类型与封装类型==时，拆箱。当比较两边都为封装类型时，不拆箱。
  * 当做运算时(+,-,*,/,>=,<=,>,<)，拆箱
+ *
+ * switch case。
+ * switch()匹配的时候不会使用equals(),而是直接使用的"=="。所以这时如果传入的是Integer对象，会拆箱。
  */
 public class Test {
 
@@ -69,5 +72,15 @@ public class Test {
         System.out.println(a == b);//不拆箱
         System.out.println(a >= b);//拆箱*/
 
+        /*Integer a = 1000;
+        //String b = "1000";
+        switch (a){//将a拆箱
+            case 0:
+                System.out.println(000);
+            case 1000:
+                System.out.println(111);
+            default:
+                System.out.println(2222);
+        }*/
     }
 }
