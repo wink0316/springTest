@@ -62,6 +62,13 @@ public class test {
 
         new Thread(() -> System.out.println("newwwwwwwww")
         ).start();
+
+        new Thread(() -> {
+            Integer a = 1;
+            Integer b = 2;
+            System.out.println("olddddddddddddd");
+            System.out.println(a + b);
+        }).start();
     }
 
 }

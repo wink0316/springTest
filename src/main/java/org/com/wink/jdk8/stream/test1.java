@@ -7,12 +7,14 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 /**
  * https://blog.csdn.net/kegaofei/article/details/80582356
  * https://www.jianshu.com/p/9fe8632d0bc2
  * https://www.cnblogs.com/franson-2016/p/5593080.html
  * https://blog.csdn.net/qq_20989105/article/details/81234175
+ * https://colorpanda.iteye.com/blog/2319688
  */
 
 public class test1 {
@@ -25,11 +27,11 @@ public class test1 {
         characters =  Arrays.asList(character);
 
         players.add(new Player("lich",17));
-        players.add(new Player("tiny",19));
+        players.add(new Player("tiny",16));
         players.add(new Player("jugg",13));
         players.add(new Player("doom",24));
         players.add(new Player("puck",20));
-        players.add(new Player("tiny2",19));
+        players.add(new Player("tiny",19));
     }
 
 
@@ -43,11 +45,18 @@ public class test1 {
         //getNames();
         //toSet();
         //toMapTest();
-        toMapTest2();
+        //toMapTest2();
+        toMapTest3();
+    }
+
+    private static void toMapTest3(){
+        Map<String, Player> collect = players.stream().collect(Collectors.toMap(Player::getName, player -> player,(k,v) -> v));
+        System.out.println(collect);
     }
 
 
     private static void toMapTest2(){
+        //key不能重复
         Map<String, Player> collect = players.stream().collect(Collectors.toMap(Player::getName, player -> player));
         System.out.println(collect);
         players.stream().collect(Collectors.toMap(Player::getName, player -> player.getAge()));
