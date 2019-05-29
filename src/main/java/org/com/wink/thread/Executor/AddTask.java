@@ -15,7 +15,7 @@ public class AddTask implements Callable{
     @Override
     public Object call() throws Exception {
         System.out.println(i + " + " + j + " = ?");
-        Thread.sleep(10000l);
+        Thread.sleep(5000l);
         int sum = i + j;
         System.out.println(i + " + " + j + " = " + sum);
         return sum;

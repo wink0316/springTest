@@ -8,7 +8,8 @@ import java.util.concurrent.Future;
 public class Test {
 
     public static void main(String[] args) {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        //ExecutorService executor = Executors.newSingleThreadExecutor();
+        ExecutorService executor = Executors.newFixedThreadPool(1);
         Future<Integer> future = executor.submit(new AddTask(1, 2));
         System.out.println("-------->");
         Integer result = null;
@@ -22,5 +23,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println("结果等于" + result);
+        //executor.shutdown();//除非手动关闭，否则线程池一直在
     }
 }
